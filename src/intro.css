@@ -1,0 +1,22 @@
+/* intro.css */
+
+
+.intro-title {
+    font-size: 4rem;
+    font-family: 'Cormorant', serif;
+    font-weight: bold;
+}
+
+/* Ensure that intro-title-container takes the full available height in small screens */
+@media (max-width: 767px) {
+    .intro-title-container {
+        align-items: start; /* Align items to the start of the container */
+        padding-top: 50%;
+    }
+}
+
+@media (min-width: 768px) {
+    .intro-title-container {
+        min-height: 100vh;  /* Keeping min-height for larger screens if needed */
+    }
+}

@@ -1,0 +1,61 @@
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Search input styling */
+input[type="text"] {
+    width: 300px; /* Fixed width for the input */
+    height: 40px; /* Taller input field for better clickability and visibility */
+    font-size: 16px; /* Bigger font size for better readability */
+    padding: 10px 10px; /* Padding inside the input box */
+    border: 1px solid #ccc; /* Slightly darker border for better contrast */
+    border-radius: 20px; /* Rounded corners */
+}
+
+/* Button styling */
+button {
+    width: 120px; /* Fixed width for consistency */
+    height: 40px; /* Matching height with input */
+    background-color: #1c1d1f; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; /* Cursor pointer to indicate it's clickable */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    border-radius: 20px;
+}
+
+button:hover {
+    background-color: #1c1d1e73; /* Darker shade on hover */
+}
+
+button:disabled {
+    background-color: #3f3d3d; /* Dull color when the button is disabled */
+}
+
+/* Card styling */
+.card {
+    transition: transform 0.3s; /* Smooth transition for hover effect */
+}
+
+.card:hover {
+    transform: scale(1.03); /* Slightly enlarge cards on hover */
+}
+
+/* Error message styling */
+p {
+    color: red; /* Make error messages red */
+    font-size: 16px; /* Larger font for better visibility */
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+    input[type="text"], button {
+        width: 100%; /* Full width on smaller screens */
+        margin-top: 10px; /* Margin top for spacing */
+    }
+}
+.title{
+    font-family: 'Cormorant';
+}

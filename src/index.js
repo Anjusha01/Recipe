@@ -3,15 +3,31 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Category from './Category';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import CategoryItems from './CategoryItems';
+import Recipie from './Recipie';
+import NavComp from './NavComp';
+import Fav from './Fav';
+import Search from './Search';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        {/* Wrap the layout component NavComp around all the routes */}
+        <Route path="/" element={<NavComp />}>
+          <Route index element={<App />} />
+          <Route path="favourites" element={<Fav />} />
+          <Route path="categories" element={<Category />} />
+          <Route path="categoryitems/:category" element={<CategoryItems />} />
+          <Route path="categoryitems/:category/:idMeal" element={<Recipie />} />
+          <Route path='search' element={<Search/>}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
