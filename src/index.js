@@ -10,6 +10,7 @@ import Recipie from './Recipie';
 import NavComp from './NavComp';
 import Fav from './Fav';
 import Search from './Search';
+import LogReg from './LogReg';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,6 +21,7 @@ root.render(
         <Route path="/" element={<NavComp />}>
           <Route index element={<App />} />
           <Route path="favourites" element={<Fav />} />
+          <Route path='login' element={<LogReg/>}/>
           <Route path="categories" element={<Category />} />
           <Route path="categoryitems/:category" element={<CategoryItems />} />
           <Route path="categoryitems/:category/:idMeal" element={<Recipie />} />

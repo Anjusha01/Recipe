@@ -17,7 +17,7 @@ function NavComp() {
     <Navbar collapseOnSelect expand="lg" className={isHomePage ? 'home-navbar' : ''}>
       <Container>
         <Navbar.Brand className='navbrand text-reset logo'>
-        Recipie
+        Recipe
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" className="navbar-toggle-icon" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -26,6 +26,9 @@ function NavComp() {
             <NavLink to='/favourites' className='navlink mx-3 text-reset'>Favourites</NavLink>
             <NavLink to='/categories' className='navlink mx-3 text-reset'>Category</NavLink>
             <NavLink to='/search' className='navlink mx-3 text-reset'>Search</NavLink>
+          </Nav>
+          <Nav className='ms-auto'>
+            <NavLink to='/login' className='navlink text-reset'>Login</NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>
