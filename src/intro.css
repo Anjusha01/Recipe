@@ -1,22 +1,44 @@
 /* intro.css */
-
-
-.intro-title {
-    font-size: 4rem;
-    font-family: 'Cormorant', serif;
-    font-weight: bold;
+.introduction {
+    background-image: url('images/cover.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex; /* Ensures flex behavior */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
 }
 
-/* Ensure that intro-title-container takes the full available height in small screens */
+.intro-title {
+    font-size: 5rem;
+    font-family: 'Cormorant', serif;
+    font-weight: bold;
+    margin-bottom: 2rem; /* Ensure spacing between title and search bar */
+}
+
+/* Adjusting for smaller screens */
 @media (max-width: 767px) {
     .intro-title-container {
-        align-items: start; /* Align items to the start of the container */
-        padding-top: 50%;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Keep items centered */
+        justify-content: flex-start; /* Align items to the start on small screens */
+        padding-top: 20%; /* Adjust according to your design */
+        width: 100%; /* Full width */
+    }
+
+    .intro-title {
+        font-size: 3rem; /* Smaller font size for mobile */
+        text-align: center; /* Ensure text is centered */
+        padding: 0 20px; /* Padding for side spacings */
     }
 }
 
 @media (min-width: 768px) {
     .intro-title-container {
-        min-height: 100vh;  /* Keeping min-height for larger screens if needed */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
     }
 }

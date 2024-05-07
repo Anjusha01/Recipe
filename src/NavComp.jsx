@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { NavLink } from 'react-router-dom';
 import './navcomp.css';
+import { GiHamburgerMenu } from "react-icons/gi";
 
 function NavComp() {
   const location = useLocation(); // Get the current location
@@ -19,9 +20,9 @@ function NavComp() {
         <Navbar.Brand className='navbrand text-reset logo'>
         Recipe
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" className="navbar-toggle-icon" />
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" className=''><GiHamburgerMenu className='navbar-toggle-icon bg-light p-1 rounded' /></Navbar.Toggle>
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto mx-5">
+          <Nav className="me-auto">
             <NavLink to='/' className='navlink mx-3 text-reset'>Home</NavLink>
             <NavLink to='/favourites' className='navlink mx-3 text-reset'>Favourites</NavLink>
             <NavLink to='/categories' className='navlink mx-3 text-reset'>Category</NavLink>

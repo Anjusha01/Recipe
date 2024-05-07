@@ -12,7 +12,6 @@ function App() {
   return (
     <>
     <Introduction/>
-    <Search/>
     <Category/>
     </>
       

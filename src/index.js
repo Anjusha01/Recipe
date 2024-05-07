@@ -11,6 +11,7 @@ import NavComp from './NavComp';
 import Fav from './Fav';
 import Search from './Search';
 import LogReg from './LogReg';
+import SearchResult from './SearchResult';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -26,6 +27,7 @@ root.render(
           <Route path="categoryitems/:category" element={<CategoryItems />} />
           <Route path="categoryitems/:category/:idMeal" element={<Recipie />} />
           <Route path='search' element={<Search/>}/>
+          <Route path='searchresult' element={<SearchResult/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

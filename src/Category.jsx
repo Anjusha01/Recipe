@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Card } from 'react-bootstrap';
+import { Card, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function Category() {
@@ -17,7 +17,7 @@ function Category() {
    
 
   return (
-    <>
+    <Container fluid>
     <h1 className='text-center mt-5'>Categories</h1>
     <div className='d-flex justify-content-center flex-wrap mx-5 p-2'>
         
@@ -31,7 +31,7 @@ function Category() {
        
     ))}
 </div>
-    </>
+    </Container>
     
   )
 }

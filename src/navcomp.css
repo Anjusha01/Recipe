@@ -11,13 +11,9 @@
 
 }
 
-.navbar-toggle-icon .navbar-toggler-icon {
-    /* filter: brightness(0) invert(1); */
-    background: url('images/menu-bar.png') center/cover no-repeat ; /* Adjust path as needed */
-    width: 30px; /* Set appropriate width */
-    height: 30px; /* Set appropriate height */
-    color: transparent; /* Hide default icon color */
-    border: none; /* Optional: remove any default borders */
+.navbar-toggle-icon{
+    border: none;  
+    float: right;
   }
   .home-navbar {
     background-color: transparent; /* Assuming you want it transparent like the intro */
@@ -31,4 +27,10 @@
 
 .logo{
   font-family: 'Style Script';
+}
+
+.navbar .navbar-toggler {
+    width: auto;  /* Set width to auto to avoid full width */
+    margin-right: 0;  /* Remove any default horizontal margin */
+    margin-left: 0;  /* Align to the right by setting left margin to auto */
 }
