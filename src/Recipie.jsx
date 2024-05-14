@@ -1,53 +1,55 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import axios from 'axios'
-import YouTube from 'react-youtube';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { useDispatch, useSelector } from 'react-redux';
+import { removeFav, setFav } from './favSlice';
 
 function Recipie() {
-    const {  idMeal } = useParams();
-    const [recipie,setRecipie]=useState([])
+    const { idM } = useParams();
+    const [recipe, setRecipe] = useState(null);  // Initialized as null to handle single recipe
+    const dispatch = useDispatch();
+    const favorites = useSelector(state => state.favstore.fav);
 
-    // Replace 'YOUR_VIDEO_ID' with your actual YouTube video ID
-
-  // Optional: Configure additional player options
-  const opts = {
-    height: '390',
-    width: '640',
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,  // This will make the video automatically play when loaded
-    },
-  };
-  const onReady = (event) => {
-    // access to player in all event handlers via event.target
-    event.target.pauseVideo();  // For example, pause the video when it's ready (remove this line if not needed)
-  };
-
-
-    useEffect(()=>{
-        let fetchData=async()=>{
-            let response=await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`)
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idM}`);
             console.log(response.data);
-            setRecipie(response.data.meals)
-        }
-        fetchData()
-    },[])
-    return (
-    <div className='p-3'>
-{recipie.map((item,index)=>(
-    <div key={index}>
-        <h1>{item.strMeal}</h1>
-        <img src={item.strMealThumb} alt="" />
-        <h3>Instructions</h3>
-        <p>{item.strInstructions}</p>
-        <YouTube videoId={item.strYoutube} opts={opts} onReady={onReady} />
-    </div>
-    
-))}
-           
+            setRecipe(response.data.meals[0]);  // Assume only one meal is returned
+        };
+        fetchData();
+    }, [idM]);
 
-    </div>
-  )
+    const isFavorite = recipe && favorites.some((item) => item.id === recipe.idMeal);
+
+    const handleFavoriteToggle = () => {
+        if (isFavorite) {
+            dispatch(removeFav(recipe.idMeal));
+        } else {
+            const newItem = { id: recipe.idMeal, ...recipe };
+            dispatch(setFav(newItem));
+        }
+    };
+
+    if (!recipe) {
+        return <div>Loading...</div>;  // Show loading or placeholder
+    }
+
+    return (
+        <div className='p-3'>
+            <div>
+                <button onClick={handleFavoriteToggle}>
+                    {isFavorite ? <FaHeart /> : <FaRegHeart />}
+                </button>
+                <h1 className='fs-1 fw-bolder mb-3'>{recipe.strMeal}</h1>
+                <img src={recipe.strMealThumb} alt={recipe.strMeal} className='w-25 m-3' />
+                <h3 className='fs-1 fw-bolder mb-3'>Instructions</h3>
+                <p className='text-reset'>{recipe.strInstructions}</p>
+                {/* Uncomment and configure YouTube if needed */}
+                {/* <YouTube videoId={parseYouTubeId(recipe.strYoutube)} opts={opts} onReady={onReady} /> */}
+            </div>
+        </div>
+    );
 }
 
-export default Recipie
+export default Recipie;

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './search.css'
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 
 function Search() {
@@ -24,7 +25,9 @@ function Search() {
         if (event.key === 'Enter') {
             handleSubmit();
         }
-    };  
+    }; 
+   
+
     return (
         <Container fluid className=''>
            <h6 className={`text-center fs-1 title ${isHomePage ? "text-light" : ""}`}>
@@ -43,6 +46,9 @@ function Search() {
                 Search
             </button>
     
+
+            </div>
+            <div>
 
             </div>
         </Container>
