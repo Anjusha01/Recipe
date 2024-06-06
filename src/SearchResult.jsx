@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Card } from 'react-bootstrap';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Search from './Search';
+import RecipeCard from './RecipeCard';
 
 function SearchResult() {
     const [data, setData] = useState([]);
@@ -38,16 +38,7 @@ function SearchResult() {
         <div className='d-flex flex-wrap justify-content-center'>
           <Search/>
             {error && <p>{error}</p>}
-            {isLoading ? <p>Loading...</p> : data.map((item, index) => (
-              <Link to={`/categoryitems/${location.state.key}/${item.idMeal}`} key={index}>
-                <Card style={{ width: '18rem' }} className='m-3 mx-5 border-0 shadow-lg'>
-                    <Card.Img src={item.strMealThumb} variant='top' />
-                    <Card.Body>
-                        <Card.Title>{item.strMeal}</Card.Title>
-                    </Card.Body>
-                </Card>
-              </Link>
-            ))}
+            {isLoading ? <p>Loading...</p> :data.map((item, index) => (<RecipeCard key={index} item={item} />))}
         </div>
     );
 }
